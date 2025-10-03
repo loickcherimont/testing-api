@@ -1,23 +1,15 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"github.com/loickcherimont/testing-api/controller"
 )
 
 func main() {
 	router := gin.Default()
 
-	router.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
-
-	// /tests
-
-	// /tests/:id
-
+	router.GET("/ping", controller.PingTest)
+	router.GET("/tests", controller.GetAllTests)
+	router.GET("/tests/:id", controller.GetTestById)
 	router.Run()
 }
